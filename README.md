@@ -1,7 +1,7 @@
 # ML_Learning
-ML algorithms and their implementations
+Machine Learning algorithms and their implementations
 
-This repo contains all ML algos that have been implemented by me.
+This repo contains all machine learning algos that have been implemented by me.
 
 This file contains the ML pipeline of implementation of algos, namely following steps:
 1.  EDA Process
