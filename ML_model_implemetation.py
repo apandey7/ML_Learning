@@ -332,8 +332,40 @@ joblib.dump(cv.best_estimator_, path + "\\MLP_Model_AP.pkl")
 #Collection of independent decision trees to get a more accurate prediction
 # =============================================================================
 
-#When to use RF algo:
+When to use RF algo:
     
+from sklearn.ensemble import RandomForestClassifier
+tr_features
+tr_labels
 
+rf = RandomForestClassifier()
+#Hyperparameters for RF include:
+#    (bootstrap=True, class_weight=None, criterion='gini',
+#            max_depth=None, max_features='auto', max_leaf_nodes=None,
+#            min_impurity_decrease=0.0, min_impurity_split=None,
+#            min_samples_leaf=1, min_samples_split=2,
+#            min_weight_fraction_leaf=0.0, n_estimators=10, n_jobs=1,
+#            oob_score=False, random_state=None, verbose=0,
+#            warm_start=False)
 
+#But, for Hyperparameter Tuning, we will deal with only below:
+#    n_estimators: 
+#    max_depth: 
 
+parameters = {
+        'n_estimators': [5,50,100],
+        'max_depth': [2,10,20,None]
+        }
+
+cv = GridSearchCV(rf,parameters, cv = 5)
+cv.fit(tr_features, tr_labels.values.ravel())
+
+print_results(cv)
+print(cv.best_estimator_)
+#RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+#            max_depth=10, max_features='auto', max_leaf_nodes=None,
+#            min_impurity_decrease=0.0, min_impurity_split=None,
+#            min_samples_leaf=1, min_samples_split=2,
+#            min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=1,
+#            oob_score=False, random_state=None, verbose=0,
+#            warm_start=False)
